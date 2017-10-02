@@ -15,7 +15,7 @@ def sort(fun, coordinate):
 
     srt = sorted(zip(fun, coordinate), key=lambda x: x[1])
     return zip(*srt)
-                                
+
 
 def mutation(exemplar):
 
@@ -36,11 +36,11 @@ def evolution(parents, best_parents, best_mutation, good_parents, good_mutation)
     for p in parents:
         new_generation.append(p)
 
-    for p in new_generation[:best_mutation]:
+    for p in new_generation[:best_parents]:
         for _ in range(best_mutation):
             new_generation.append(mutation(p))
 
-    for p in new_generation[best_mutation:(best_mutation + good_mutation)]:
+    for p in new_generation[best_mutation:(best_parents + good_parents)]:
         for _ in range(good_mutation):
             new_generation.append(mutation(p))
     return new_generation
